@@ -104,6 +104,10 @@ cd.init=function(){
     });
 }
 
+/**
+*
+* @return true为折叠，false为不折叠
+*/
 cd.checkCollapsed=function(#div){
     var t_=$div.find(".",cd.clazzName.collapsed);
     return !t_?false:true;
@@ -205,10 +209,37 @@ cd.toggle=function(index,iscollapsed){
         }
     }
     
-    if(iscollapsed){
+    ct.changeToggleBody(iscollapsed,$hidebody,$showbody);
     
+}
+
+ct.changeToggleBody=function(iscollapsed,$hidebody,$showbody){
+    if($hidebody==$showbody){
+        if(iscollapsed){
+            cd.hide($hidebody);
+        }else{
+            cd.show($showbody);
+        }
     }else{
-    
+        if(iscollapsed){
+            cd.show($hidebody);
+            cd.hide($showbody);  
+        }else{
+            cd.hide($showbody);
+            cd.show($hidebody);
+        }
+    }
+}
+
+ct.changeToggleButton=function(iscollapsed,$showspot,$hidespot){
+    if($showspot==$hidespot){
+        if(iscollapsed){
+        
+        }
+    }else{
+        if(iscollapsed){
+        
+        }
     }
 }
 
