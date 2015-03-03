@@ -61,9 +61,7 @@ cd.init=function(){
 
         var id=(divIndex++);
         $div.attr("id",cd.clazzName.CD_Tag+id);
-
-
-
+        
         var customHead=false;
         var customHotspot=false;
         var $openspot,$closespot,$head;
@@ -165,8 +163,33 @@ cd.toggle=function(index,iscollapsed){
         iscollapsed=cd.checkCollapsed($div)
     }
 
+    var customHead=false;
+    var customHotspot=false;
     var customBody=false;
+    var $openspot,$closespot,$head;
     var $showbody,$hidebody;
+    {//head,hotspot
+        var head=$div.find("."+cd.clazzName.NH).first();
+        var head_show=$div.find("."+cd.clazzName.NH+">."+cd.clazzName.NH_TS).first();
+        var head_hide=$div.find("."+cd.clazzName.NH+">."+cd.clazzName.NH_TH).first();
+        var t_customHS=$div.find("."+cd.clazzName.CD_HS).frist();
+
+        if(!head){
+            customHead=false;
+            $head=head;
+        }else{
+            customHead=true;
+        }
+
+        if(!t_customHS&&(head_show&&head_hide)){
+            customHotspot=false;
+            $openspot=head_show;
+            $closespot=head_hide;
+        }else{
+            customHotspot=true;
+            $openspot=$closespot=t_customHS;
+        }
+    }
     {//body
         var t_body=$div.find("."+cd.clazzName.NC).first();
         var t_showbody=$div.find("."+cd.clazzName.NC_TS).first();
@@ -180,6 +203,12 @@ cd.toggle=function(index,iscollapsed){
             customBody=false;
             $showbody=$hidebody=t_body;
         }
+    }
+    
+    if(iscollapsed){
+    
+    }else{
+    
     }
 }
 
