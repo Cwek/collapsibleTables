@@ -12,12 +12,14 @@
  * 以上为原版权信息
  */
 ( function () {
+var cd={};
+window.collapsibleDivs=cd;
+
+cd.collapseCaption = wgULS('隐藏', '隱藏');
+cd.expandCaption = wgULS('显示', '顯示');
  
-var collapseCaption = wgULS('隐藏', '隱藏');
-var expandCaption = wgULS('显示', '顯示');
- 
-var navigationBarHide = collapseCaption + '▲';
-var navigationBarShow = expandCaption + '▼';
+cd.navigationBarHide = cd.collapseCaption + '▲';
+cd.navigationBarShow = cd.expandCaption + '▼';
  
 /**
  * Shows and hides content and picture (if available) of navigation bars.
@@ -42,7 +44,7 @@ function toggleNavigationBar( indexNavigationBar, e ) {
                 frame.find( '> .toggleHide' ).each( function() {
                         $( this ).css( 'display', 'none' );
                 });
-                toggle.text( navigationBarHide );
+                toggle.text( cd.navigationBarHide );
                 frame.removeClass( 'collapsed' );
         } else {
                 frame.find( '> .NavPic, > .NavContent, > .toogleShow' ).each( function() {
@@ -51,7 +53,7 @@ function toggleNavigationBar( indexNavigationBar, e ) {
                 frame.find( '> .toggleHide' ).each( function() {
                         $( this ).css( 'display', 'block' );
                 });
-                toggle.text( navigationBarShow );
+                toggle.text( cd.navigationBarShow );
                 frame.addClass( 'collapsed' );
         }
 }
@@ -89,7 +91,7 @@ function createNavigationBarToggleButton( $content ) {
                         }
                 });
  
-                navToggle.text( showNavigationBarHide? navigationBarHide: navigationBarShow );
+                navToggle.text( showNavigationBarHide? cd.navigationBarHide: cd.navigationBarShow );
  
                 frame.find( '> .NavHead' ).each( function() {
                         $( this ).append( navToggle );
